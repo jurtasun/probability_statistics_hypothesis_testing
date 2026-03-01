@@ -1,175 +1,129 @@
-% Chapter - Modelling, dependency and correlation ...................................................................
+% Chapter - Modelling, dependency and correlation ............................................................
+
 \chapter{Modelling, dependency, and correlation}
 \label{chapter5}
 
 \epigraph{\textit{Numbers have an important story to tell,\\if given a voice.}}{— Florence Nightingale}
 
-% In earlier chapters we focused on describing data and estimating unknown quantities, while in this chapter we move toward understanding how quantities relate to one another and how uncertainty enters these relationships through modelling, shifting attention from isolated variables to structured relationships among them. 
+The modern scientific conception of nature rests on the idea that observable phenomena can be represented through variables whose relationships follow general mathematical laws, a perspective made explicit through analytic geometry and the introduction of coordinate systems that allowed geometric relations to be expressed algebraically \cite{descartes_1637_geometry,newton_1687_principia}. 
 
-% \medskip
+\medskip
 
-% A statistical model is not a literal description of reality but a simplified representation designed to capture essential patterns while acknowledging uncertainty and variability, allowing us to reason systematically even when information is incomplete or noisy. 
+The development of calculus extended this framework by providing tools to describe continuous change, enabling relationships between quantities to be expressed as functions \(y = f(x)\) whose rates of change could be studied through derivatives and whose accumulated effects could be analyzed through integration \cite{leibniz_1684_nova,cauchy_1821_analyse}. 
 
-% \medskip
+\medskip
 
-% Probability provides a language for uncertainty, while statistics provides tools for learning from data, and modelling forms the conceptual bridge between them by combining assumptions, randomness, and observed evidence into a coherent framework, an idea that matured during the late nineteenth and early twentieth centuries with the work of Galton, Pearson, and Fisher \cite{pearson_1895_evolution,fisher_1925_statistical}. 
+Prediction became the defining feature of scientific explanation: if the relation between variables can be expressed mathematically, then under specified assumptions one may compute future or unobserved values, thereby linking empirical regularities with formal reasoning and laying conceptual foundations later absorbed into probabilistic modelling \cite{reichenbach_1938_prediction,cox_2006_principles}. 
 
+% Section 1 ...................................................................................................
 
+\section{The ide of model, explanation and prediction}
 
-% Section .............................................................................................................
-\section{Models, variables, and functions}
+Scientific investigation proceeds from observation to structured explanation, transforming collections of measurements into relations among quantities that can be expressed symbolically and analyzed systematically \cite{hacking_1975_emergence}. 
 
-% A fundamental mathematical idea underlying statistical modelling is the notion of a \textit{function}, which describes how one quantity depends on another and provides a structured way to translate inputs into outputs.
+\medskip
 
-% \medskip
+A fundamental conceptual distinction in modelling is between \emph{variables} and \emph{parameters}. A variable is a quantity that may take different values across individuals, experiments, or time, whereas a parameter is a fixed but unknown constant that characterizes the underlying mechanism generating those variable outcomes. 
 
-% In its simplest form, a function associates an input variable with an output variable, expressing how changes in one are reflected in changes of the other in a consistent and interpretable manner. 
+\medskip
 
-% \medskip
+The distinction emerged gradually in early probability theory: Bernoulli treated probabilities as fixed characteristics of repeatable processes \cite{bernoulli_1713_ars}, Laplace formalized parameters within analytical probability models \cite{laplace_1812_theorie}, and in the twentieth century Fisher clarified parameters as fixed constants to be estimated from random samples \cite{fisher_1925_statistical}. 
 
-% In statistics, we often write this relationship symbolically as
-% \begin{equation}
-%     Y = f(X),
-% \end{equation}
-% where \(X\) represents an input variable and \(Y\) an output variable. 
+\medskip
 
-% \medskip
+Formally, if \(Y_1,\dots,Y_n\) denote random variables representing observed measurements, one may posit that their distribution depends on a parameter \(\theta\), written \(Y_i \sim f(y \mid \theta)\), where \(\theta\) is unknown but not random in the classical frequentist framework. 
 
-% When several inputs influence an outcome, this idea naturally extends to multiple variables, which can be written abstractly as
-% \begin{equation}
-%     Y = f(X_1, X_2, \dots, X_p).
-% \end{equation}
+\medskip
 
-% \medskip
+Thus in a regression model such as 
+\[
+Y = a + bX + \varepsilon,
+\]
+the quantities \(X\) and \(Y\) are variables that vary across observations, while \(a\) and \(b\) are parameters describing the systematic structure relating them. 
 
-% Because real-world systems are influenced by many unobserved factors, this relationship is rarely exact and must be understood as an approximation rather than a deterministic rule. 
+\medskip
 
-% \medskip
+For laboratory scientists, this distinction is crucial: measurements such as enzyme activity, concentration, or response time are variables that fluctuate, whereas quantities such as a true mean effect or regression slope are parameters summarizing the underlying biological mechanism that generated those measurements \cite{degroot_2012_probability}.
 
-% The explicit use of mathematical functions to represent empirical relationships developed gradually, particularly in astronomy and biology, where Gauss introduced systematic modelling of observational error and Pearson formalized functional relationships between variables \cite{gauss_1809_astronomy,pearson_1895_evolution}. 
+% Section 2 ...................................................................................................
 
+\section{Probability Structure, Error, and Uncertainty}
 
+All empirical measurement exhibits variability, and Gauss’s theory of errors formalized the distinction between systematic structure and random deviation in scientific observation \cite{gauss_1809_theoria}. 
 
-% Section .............................................................................................................
-\section{Error, noise, and uncertainty}
+\medskip
 
-% The discrepancy between what a model predicts and what is actually observed is called \textit{error}, and it arises naturally even when a model is well chosen and carefully constructed. 
+Kolmogorov’s axiomatization of probability \cite{kolmogorov_1933_grundbegriffe} provided the mathematical foundation for expressing models in the form \(Y = f(X) + \varepsilon\), separating predictable dependence from stochastic fluctuation. 
 
-% \medskip
+\medskip
 
-% Rather than viewing error as a failure, statistics treats it as an intrinsic feature of data arising from measurement limitations, natural variability, and incomplete information about complex systems. 
+Twentieth-century developments reframed error not as failure but as intrinsic uncertainty requiring quantification rather than elimination \cite{cox_2006_principles,mayo_1996_error}. 
 
-% \medskip
+\medskip
 
-% To reflect this uncertainty, models are commonly written in the form
-% \begin{equation}
-%     Y = f(X) + \varepsilon,
-% \end{equation}
-% where the term \(\varepsilon\) represents random variation not explained by the model. 
+For experimental researchers, the error term represents biological variability, measurement imprecision, and unobserved influences, and properly accounting for it guards against overstated conclusions and irreproducible findings \cite{ioannidis_2005_false}. 
 
-% \medskip
+% Section 3 ...................................................................................................
 
-% This error term is typically assumed to fluctuate around zero,
-% \begin{equation}
-%     \mathbb{E}[\varepsilon] = 0,
-% \end{equation}
-% expressing the idea that errors do not systematically favor over- or under-prediction. 
+\section{Estimation, Inference, and Scientific Evidence}
 
-% \medskip
+Once a model specifies variables and parameters, the central inferential task is to estimate the unknown parameters from observed data. Fisher systematized this process through likelihood theory, treating parameters as fixed but unknown constants and the observed data as realizations of random variables \cite{fisher_1925_statistical}. 
 
-% The separation between systematic structure and random error originates in Gauss’s theory of errors and was later refined by Fisher, who emphasized probabilistic noise as a central object of inference rather than a nuisance \cite{gauss_1809_astronomy,fisher_1925_statistical}. 
+\medskip
 
+Given independent observations \(Y_1,\dots,Y_n\) with density \(f(y \mid \theta)\), the likelihood function is defined as 
+\[
+L(\theta) = \prod_{i=1}^n f(Y_i \mid \theta),
+\]
+and the maximum likelihood estimator is 
+\[
+\hat{\theta} = \arg\max_{\theta} L(\theta).
+\]
 
+\medskip
 
-% Section .............................................................................................................
-\section{Estimation and inference}
+This framework formalizes the conceptual separation between random variables and fixed parameters: variability arises from the sampling distribution of the estimator \(\hat{\theta}\), not from randomness in \(\theta\) itself within the classical paradigm \cite{degroot_2012_probability}. 
 
-% Once a model structure has been chosen, its unknown components must be determined from data, a process known as \textit{estimation}, which translates observed information into numerical summaries. 
+\medskip
 
-% \medskip
+Neyman and Pearson further developed procedures for testing hypotheses about parameters while controlling long-run error rates \cite{pearson_neyman_1933_efficient}, establishing systematic rules for deciding whether observed data provide sufficient evidence to reject a specified parameter value. 
 
-% Estimation produces numerical values, but these values are themselves uncertain because they depend on finite and noisy observations rather than complete knowledge of the underlying process. 
+\medskip
 
-% \medskip
+For laboratory scientists, this means that while individual measurements vary unpredictably, the target of inference is a stable underlying quantity — such as a true mean difference, rate constant, or regression slope — whose uncertainty is quantified through confidence intervals and hypothesis tests grounded in sampling theory \cite{cox_2006_principles}.
 
-% For example, estimating a parameter \(\theta\) from data produces a value \(\hat{\theta}\),
-% \begin{equation}
-%     \hat{\theta} = \hat{\theta}(X_1, \dots, X_n),
-% \end{equation}
-% highlighting that estimates are functions of the observed sample. 
+% Section 4 ...................................................................................................
 
-% \medskip
+\section{Linear Dependence, Correlation, and Linear Models}
 
-% Statistical inference addresses this uncertainty by providing methods to assess reliability, variability, and the strength of conclusions drawn from estimated models. 
+The concept of regression originated in Galton’s studies of heredity and was formalized mathematically by Pearson through correlation and least-squares methods \cite{pearson_1895_contributions,spearman_1904_association}. 
 
-% \medskip
+\medskip
 
-% Competing interpretations of inference were developed in the early twentieth century by Fisher, Neyman, and Pearson, whose debates shaped modern views on estimation, testing, and scientific reasoning \cite{fisher_1925_statistical,neyman_pearson_1933_efficient}. 
+A simple linear regression model takes the form \(Y = a + bX + \varepsilon\), where the slope parameter \(b\) represents the expected change in \(Y\) associated with a one-unit change in \(X\). 
 
+\medskip
 
+This framework generalizes to the linear model \(Y = X\beta + \varepsilon\), unifying regression, analysis of variance, and experimental design within a single structure \cite{fisher_1925_statistical,fisher_1935_design}. 
 
-% Section .............................................................................................................
-\section{Linear dependence and correlation}
+\medskip
 
-% The simplest and most widely used models assume a \textit{linear} relationship between variables, in which changes in one variable are associated with proportional changes in another over a meaningful range. 
+For laboratory researchers, linear models allow simultaneous adjustment for multiple predictors such as treatment, age, and batch effects, while correlation provides a summary of association without implying causation. 
 
-% \medskip
+% Section 5 ...................................................................................................
 
-% A linear model with one input variable can be written as
-% \begin{equation}
-%     Y = a + bX + \varepsilon,
-% \end{equation}
-% where the constants \(a\) and \(b\) describe the intercept and slope of the relationship. 
+\section{Beyond Linearity: Generalized Linear Models and Interpretation}
 
-% \medskip
+Many scientific outcomes are not normally distributed, and the probabilistic foundation established by Kolmogorov \cite{kolmogorov_1933_grundbegriffe} permits systematic extension beyond classical linear assumptions. 
 
-% The slope \(b\) quantifies the expected change in \(Y\) associated with a one-unit change in \(X\),
-% \begin{equation}
-%     \Delta Y \approx b \, \Delta X,
-% \end{equation}
-% providing a direct interpretation of linear dependence. 
+\medskip
 
-% \medskip
+Generalized Linear Models retain a linear predictor while allowing alternative response distributions through a link function, expressed abstractly as \(g(\mathbb{E}[Y]) = X\beta\). 
 
-% Correlation provides a numerical summary of linear dependence, measuring the strength and direction of association without implying causation. 
+\medskip
 
-% \medskip
+Logistic regression models binary outcomes, Poisson regression models counts, and modern biological analyses such as RNA-seq differential expression rely on likelihood-based GLM frameworks \cite{love_2014_deseq2,cox_2006_principles}. 
 
-% The concept of correlation was introduced by Galton and formalized by Pearson, who emphasized both its descriptive power and its potential for misuse when interpreted causally \cite{pearson_1895_evolution,spearman_1904_association}. 
+\medskip
 
-
-
-% Section .............................................................................................................
-\section{Non-linear dependence and Generalized Linear Models}
-
-% Many relationships in nature and society are not linear, and forcing a linear model onto such data can obscure important structure and lead to misleading conclusions. 
-
-% \medskip
-
-% Non-linear models allow the function \(f\) to take more flexible forms, while still retaining a clear separation between systematic structure and random variation. 
-
-% \medskip
-
-% Symbolically, such models retain the same basic structure,
-% \begin{equation}
-%     Y = f(X) + \varepsilon,
-% \end{equation}
-% but differ in the choice of the function \(f\). 
-
-% \medskip
-
-% Generalized Linear Models reflect a historical movement toward flexible yet interpretable modelling frameworks grounded in probability theory, building on axiomatic foundations introduced by Kolmogorov \cite{kolmogorov_1933_foundations}. 
-
-
-
-% % Exercises ............................................................................................................
-
-% \newpage
-
-% \subsection*{Exercises}
-
-% \textbf{1.} Describe in words a situation where one quantity depends on another and identify possible sources of error.\\
-
-% \textbf{2.} Explain the meaning of the term \(\varepsilon\) in a statistical model.\\
-
-% \textbf{3.} Give an example of a real-world relationship that is unlikely to be linear.
+Finally, statistical association does not automatically establish causation, and rigorous interpretation requires careful design, testing, and critical scrutiny consistent with principles of scientific reasoning \cite{popper_1934_logic,mayo_2018_severe}. 
