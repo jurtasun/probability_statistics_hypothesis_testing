@@ -1,21 +1,25 @@
-An introduction to publishing OERs from Kings College
-https://libguides.kcl.ac.uk/c.php?g=709665&p=5120050
+Open Educational Resource
 
-OER Commons starter kit
-https://oercommons.org/courses/the-oer-starter-kit-simple-book-publishing
+28/05/2025 ........................................................................................
 
-White Rose Libraries OER starter kit
-https://sites.google.com/york.ac.uk/oertoolkit/creating
+    An introduction to publishing OERs from Kings College
+    https://libguides.kcl.ac.uk/c.php?g=709665&p=5120050
 
-Guidance for OER authors from Iowa State University
-https://www.iastatedigitalpress.com/site/textbook-authors/
+    OER Commons starter kit
+    https://oercommons.org/courses/the-oer-starter-kit-simple-book-publishing
 
-An introductory book on Statistical Interference hosted on the Open Textbook Library
-https://open.umn.edu/opentextbooks/textbooks/statistical-inference-for-everyone
+    White Rose Libraries OER starter kit
+    https://sites.google.com/york.ac.uk/oertoolkit/creating
+
+    Guidance for OER authors from Iowa State University
+    https://www.iastatedigitalpress.com/site/textbook-authors/
+
+    An introductory book on Statistical Interference hosted on the Open Textbook Library
+    https://open.umn.edu/opentextbooks/textbooks/statistical-inference-for-everyone
 
 
 
-01/07/2025
+01/07/2025 ........................................................................................
 
 format textbook / manual / manuscript:
 
@@ -54,7 +58,7 @@ Bibliography (not found / no free / open source pdf):
 
 
 
-16/09/2025
+16/09/2025 ........................................................................................
 
 Meeting Steel Wagstaff at Pressboks
 
@@ -66,17 +70,42 @@ Meeting Steel Wagstaff at Pressboks
 
     Visit book, inspect item in figure (...)
 
+    Equation vs in-line equation.
+    Add ordered references.
+    How to access presaved versions, apart from manually pressing "Save". Ctrl+S does not really save content.
+
+    Paragraphs, spacing and indentation.
 
 
-Equation vs in-line equation.
-Add ordered references.
-How to access presaved versions, apart from manually pressing "Save". Ctrl+S does not really save content.
 
-Paragraphs, spacing and indentation.
-
-
-26/01/2026
+26/01/2026 ........................................................................................
 
     Jan Grabowski, Lancaster - OER mathematics, Sage Math
     Alex Best, Sheffield - Jupyter Books Plugin
     Steel Waagstaff, Pressboks - Onboarding para Library Services
+
+
+
+10/02/2026 ........................................................................................
+
+    Jan, Lancaster University:
+    Latex to html: upload html to moodle
+    have html accessible versions, upload to web space
+    the IMS relies on publications to get money, not open to open-source
+
+    latex source, through [...] mathjax, and also produces mathml
+    OBP, Open Book publishing, printed on demand / copies of the pdf
+
+        i) bookml: 1. install underlying / prerequisites (latest version of latexml)
+        https://www.maths.lancs.ac.uk/~grabowsj/rtaca/index.html
+
+        ii) download folder from vincenzo's website, put our latex inside, and compile
+        https://vlmantova.github.io/bookml/
+
+    Edit in bookml, translate form latex to html, and render to pdf
+    The ready to print pdf goes to OBP, which publishes both the pdf and html
+
+    a.tosi@openbookpublishers.com
+    
+    Alessandra Tosi (Co-Editor in Chief)
+    
