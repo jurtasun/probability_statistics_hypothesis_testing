@@ -1,4 +1,4 @@
-## Introduction to probability theory, statistical inference and hypothesis testin
+## Introduction to probability, statistics and hypothesis testing
 
 <img src="/docs/readme_figures/imperial_ecri.png" width = 600>
 <img src="/docs/readme_figures/pressbooks_logo.png" width = 600>
