@@ -1,9 +1,0 @@
-# Render to pdf
-$pdf_mode = 1;
-$pdflatex = 'pdflatex -interaction=nonstopmode -synctex=1 %O %S';
-
-# Use BibTeX (default)
-$bibtex_use = 1;  # optional, could omit entirely
-
-# Clean auxiliary files
-$clean_ext .= " maf mtc mtc0 mtc1 mtc2 mtc3 mtc4 mtc5 mtc6 mtc7 mtc8 mtc9 mtc10 mtc11 mtc12";
