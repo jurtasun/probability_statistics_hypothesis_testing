@@ -1,6 +1,6 @@
 ## Introduction to probability, statistics and hypothesis testing
 
-<img src="/docs/readme_figures/imperial_ecri.png" width = 600>
+<img src="/docs/readme_figures/imperial-college-logo.png" width = 600>
 <img src="/docs/readme_figures/pressbooks_logo.png" width = 600>
 
 ### Jesús Urtasun Elizari, MRC LMS & ICL RCDS
