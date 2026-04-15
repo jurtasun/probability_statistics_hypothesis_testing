@@ -29,10 +29,10 @@ All will be followed by a practical session and hands-on coding, both in Python 
 
 These lecture notes are based on the content of the following courses at RCDS Imperial College London and MRC Laboratory of Medical Sciences:
 
-- Introduction to sampling and hypothess testing
+- Introduction to probability and statistical inference
 [Introduction to computational statistics](https://github.com/LMSBioinformatics/lms_computational_statistics/)
 
-- Introduction to sampling and hypothess testing
+- Introduction hypothess testing
 [Introduction to sampling and hypothesis testing](https://www.imperial.ac.uk/early-career-researcher-institute/learning-and-development/courses-by-programme/research-computing-and-data-science/sampling-hypothesis-testing/)
 
 - Further hypothesis testing
