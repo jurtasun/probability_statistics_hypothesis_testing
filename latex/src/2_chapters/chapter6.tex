@@ -1,0 +1,218 @@
+% Chapter - Introduction to Bayesian probability ..............................................................
+
+\chapter{Introduction to Bayesian probability}
+\label{chapter6}
+
+\epigraph{\textit{Probability statements are just summaries\\of repeated observations.}}{— W. V. Quine}
+
+% Section .....................................................................................................
+
+\section{Motivation and philosophy}
+
+Probability first emerged as a formal analysis of repeated random experiments, where the probability of an event was identified with its long-run relative frequency in an infinite sequence of trials \cite{bernoulli_1713_ars}. 
+
+\medskip
+
+In this frequentist conception, probability statements describe stable regularities of repeatable processes rather than degrees of belief about singular events, and uncertainty is interpreted as variability across hypothetical repetitions. 
+
+\medskip
+
+However, many scientific and practical questions concern unique situations, such as whether a specific hypothesis is true or whether a particular patient has a disease, and these cannot be meaningfully interpreted as infinite sequences of identical trials. 
+
+\medskip
+
+Bayes and Laplace extended probability to quantify rational uncertainty under incomplete information, treating probability as a numerical expression of what is known relative to available evidence \cite{bayes_1763_doctrine,laplace_1812_theorie}. 
+
+\medskip
+
+This broader interpretation allows probabilities to be assigned not only to events but also to hypotheses and parameters, embedding uncertainty directly into scientific reasoning rather than restricting it to repeated sampling contexts. 
+
+% Section .....................................................................................................
+
+\section{Dependent and independent events}
+
+Conditional probability formalizes how information changes uncertainty, and for events \(A\) and \(B\) with \(\mathbb{P}(B)>0\), it is defined as 
+\[
+\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)},
+\]
+ensuring consistency with Kolmogorov’s axioms \cite{kolmogorov_1933_grundbegriffe}. 
+
+\medskip
+
+Events are independent if \(\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)\), which implies \(\mathbb{P}(A \mid B) = \mathbb{P}(A)\), meaning that information about \(B\) leaves beliefs about \(A\) unchanged. 
+
+\medskip
+
+Dependence arises whenever conditioning alters probability, and much of probabilistic reasoning consists of identifying such informational structure, a theme developed systematically in stochastic process theory \cite{doob_1953_stochastic}. 
+
+\medskip
+
+Conditional reasoning is central to inference because scientific evidence almost always consists of observing some event \(B\) and asking how this observation should modify prior uncertainty about another event or parameter \(A\). 
+
+% Section .....................................................................................................
+
+\section{Frequentist vs Bayesian}
+
+The frequentist interpretation defines probability as long-run relative frequency and treats parameters as fixed but unknown constants, while randomness arises from sampling variation \cite{vonmises_1928_truth,degroot_2012_probability}. 
+
+\medskip
+
+In this framework, statements such as “the probability that the parameter lies in an interval is 0.95” are avoided, since the parameter is not random; instead, one constructs procedures that produce intervals containing the true parameter in 95\% of repeated samples. 
+
+\medskip
+
+The Bayesian interpretation, by contrast, treats probability as a coherent degree of belief constrained by rational consistency, allowing probabilities to be assigned to hypotheses and parameters themselves \cite{ramsey_1931_foundations,definetti_1974_probability}. 
+
+\medskip
+
+Under this view, parameters are modeled as random variables with prior distributions reflecting initial uncertainty, and inference consists of updating this distribution through Bayes’ rule when data are observed. 
+
+\medskip
+
+Philosophically, the difference concerns meaning rather than mathematics: frequentism anchors probability in hypothetical repetition, whereas Bayesianism interprets probability as rational belief updated by evidence, embedding learning directly into the probabilistic framework. 
+
+% Section .....................................................................................................
+
+\section{The Bayes rule}
+
+Bayes’ rule follows from the symmetry of joint probability and provides the fundamental updating mechanism:
+\[
+\mathbb{P}(A \mid B) = \frac{\mathbb{P}(B \mid A)\mathbb{P}(A)}{\mathbb{P}(B)}.
+\]
+
+\medskip
+
+In parametric form, if \(\theta\) denotes an unknown parameter and \(Y\) observed data, Bayes’ theorem becomes 
+\[
+p(\theta \mid Y) = \frac{p(Y \mid \theta)p(\theta)}{p(Y)},
+\]
+where \(p(\theta)\) is the prior, \(p(Y \mid \theta)\) the likelihood, and \(p(\theta \mid Y)\) the posterior distribution \cite{laplace_1812_theorie,jaynes_2003_logic}. 
+
+\medskip
+
+\textbf{The Monty Hall problem.} Suppose one of three doors hides a prize and the host reveals a losing door after the contestant chooses one; if the contestant initially selects a door, the probability of having chosen correctly is \(1/3\), and revealing a losing door redistributes the remaining probability mass to the single unopened alternative, yielding 
+\[
+\mathbb{P}(\text{win by switching}) = \frac{2}{3}.
+\]
+The apparent paradox arises because conditioning changes the probability space, illustrating how evidence modifies prior uncertainty. 
+
+\medskip
+
+\textbf{Biased die example.} Suppose a die is fair with probability \(0.9\) and biased toward six (with \(\mathbb{P}(6)=1/3\)) with probability \(0.1\); after observing a single roll of six, Bayes’ rule gives
+\[
+\mathbb{P}(\text{biased} \mid 6) = \frac{\frac{1}{3}\cdot 0.1}{\frac{1}{3}\cdot 0.1 + \frac{1}{6}\cdot 0.9} = \frac{0.0333}{0.0333 + 0.15} \approx 0.18,
+\]
+showing how evidence moderately increases belief in bias but does not make it certain. 
+
+\medskip
+
+\textbf{Medical testing example.} If a disease affects 5\% of a population, a test has sensitivity 0.99 and specificity 0.99, then 
+\[
+\mathbb{P}(\text{disease} \mid +) = \frac{0.99 \cdot 0.05}{0.99 \cdot 0.05 + 0.01 \cdot 0.95} \approx 0.84,
+\]
+demonstrating that even highly accurate tests must be interpreted relative to base rates. 
+
+\medskip
+
+These examples illustrate the central Bayesian insight: probability is not static but conditional, and rational learning consists of combining prior information with observed evidence through consistent mathematical updating. 
+
+% Section .....................................................................................................
+
+\section{Geometric interpretation and probability trees}
+
+Bayes’ rule can be visualized geometrically by interpreting probabilities as areas that partition the unit interval, where prior probabilities divide the total area and likelihoods redistribute mass proportionally within each partition. 
+
+\medskip
+
+Consider two mutually exclusive hypotheses \(H_1\) and \(H_2\) with prior probabilities \(\mathbb{P}(H_1)\) and \(\mathbb{P}(H_2)\), and suppose data \(D\) are observed; the joint probabilities are 
+\[
+\mathbb{P}(H_i \cap D) = \mathbb{P}(D \mid H_i)\mathbb{P}(H_i),
+\]
+so posterior probabilities correspond to normalized areas within the total region corresponding to \(D\). 
+
+\medskip
+
+This normalization step, dividing by 
+\[
+\mathbb{P}(D) = \sum_i \mathbb{P}(D \mid H_i)\mathbb{P}(H_i),
+\]
+ensures that posterior probabilities sum to one and clarifies that Bayesian updating is proportional reweighting of prior mass by likelihood factors. 
+
+\medskip
+
+Probability trees provide a discrete analogue: branches represent prior probabilities, sub-branches represent conditional probabilities, and posterior probabilities correspond to the relative proportions of terminal branches consistent with observed evidence, making explicit the multiplicative structure of conditional reasoning. 
+
+% Section .....................................................................................................
+
+\section{Conjugate priors: the Beta--Binomial model}
+
+A central computational advantage of Bayesian inference arises when the prior distribution is conjugate to the likelihood, meaning that the posterior distribution belongs to the same family as the prior. 
+
+\medskip
+
+Suppose \(Y \sim \text{Binomial}(n,\theta)\), where \(\theta \in (0,1)\) represents an unknown probability parameter, and assign a Beta prior 
+\[
+\theta \sim \text{Beta}(\alpha,\beta),
+\]
+with density proportional to \(\theta^{\alpha-1}(1-\theta)^{\beta-1}\). 
+
+\medskip
+
+The likelihood is proportional to \(\theta^{y}(1-\theta)^{n-y}\), so the posterior distribution becomes 
+\[
+\theta \mid Y=y \sim \text{Beta}(\alpha + y,\beta + n - y),
+\]
+showing that observed successes and failures update prior counts additively. 
+
+\medskip
+
+This simple updating rule reflects Laplace’s interpretation of probability as rational learning from accumulated evidence \cite{laplace_1812_theorie}, and it demonstrates concretely how prior information combines with data in a transparent algebraic form. 
+
+\medskip
+
+The posterior mean is 
+\[
+\mathbb{E}[\theta \mid Y=y] = \frac{\alpha + y}{\alpha + \beta + n},
+\]
+which can be interpreted as a weighted average of prior mean and sample proportion, illustrating shrinkage toward prior information. 
+
+% Section .....................................................................................................
+
+\section{Bayes' theorem as a formal result}
+
+The central updating principle of Bayesian inference can be stated formally as a theorem derived directly from the axioms of probability. 
+
+\medskip
+
+\begin{theorem}[Bayes' Rule]
+Let \(A\) and \(B\) be events with \(\mathbb{P}(B)>0\). Then
+\[
+\mathbb{P}(A \mid B) = \frac{\mathbb{P}(B \mid A)\mathbb{P}(A)}{\mathbb{P}(B)}.
+\]
+\end{theorem}
+
+\medskip
+
+\begin{proof}
+By definition of conditional probability,
+\[
+\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}.
+\]
+Since joint probability is symmetric, \(\mathbb{P}(A \cap B) = \mathbb{P}(B \cap A)\), and applying the definition again gives
+\[
+\mathbb{P}(B \cap A) = \mathbb{P}(B \mid A)\mathbb{P}(A).
+\]
+Substituting yields the stated identity. \qed
+\end{proof}
+
+\medskip
+
+In parametric form, if \(\theta\) is an unknown parameter and \(Y\) observed data, Bayes’ theorem becomes
+\[
+p(\theta \mid Y) = \frac{p(Y \mid \theta)p(\theta)}{\int p(Y \mid \theta)p(\theta)\,d\theta},
+\]
+where the denominator ensures normalization and is often called the marginal likelihood or evidence \cite{cox_2006_principles}. 
+
+\medskip
+
+This theorem reveals that Bayesian updating is not an additional assumption but a direct algebraic consequence of the definition of conditional probability, interpreted within a framework in which parameters are treated as uncertain quantities. 

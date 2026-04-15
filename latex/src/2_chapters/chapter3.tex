@@ -1,0 +1,268 @@
+% Chapter 3. Estimation, variability and confidence ...............................................
+\chapter{Estimation, variability and confidence}
+\label{chapter3}
+
+\epigraph{\textit{The development of mathematics is a continuous process of abstraction.}}{— Emmy Noether}
+
+% In the previous chapters, we described data using summary statistics and introduced probability models to represent uncertainty. In this chapter, we connect these two perspectives. Estimation is the process through which data are used to learn about unknown features of a population, while probability provides the language to quantify how reliable such learning is.
+
+% \medskip
+
+% As we discussed already, a crucial distinction must be made between \textit{prediction} and \textit{inference}. Prediction focuses on forecasting future observations, whereas inference aims to draw conclusions about underlying parameters or mechanisms that generate the data. Estimation lies at the heart of inference: it transforms random samples into numerical statements about unknown quantities.
+
+% \medskip
+
+% Because data are inherently variable, different samples lead to different estimates. Understanding how estimates behave across repeated samples is therefore essential. The main goal of this chapter is to explain how probability theory allows us to quantify this variability and to construct principled measures of uncertainty such as confidence intervals.
+
+% The Law of Large Numbers ........................................................................
+\section{The Law of Large Numbers}
+
+% Historically, the Law of Large Numbers was first proved by Jacob Bernoulli in his posthumously published \textit{Ars Conjectandi} (1713). Bernoulli’s motivation was not purely mathematical: he sought to justify how stable numerical patterns could emerge from seemingly random individual events. His theorem provided the first rigorous foundation for interpreting probability in terms of long-run relative frequencies and marked a decisive step in connecting abstract probability with empirical observation \cite{bernoulli_1713_ars, hald_1990_history}.
+
+% \medskip
+
+% The Law of Large Numbers formalizes the intuitive idea that averages stabilize when more data are collected. While individual observations may be highly variable, their average becomes increasingly predictable as the sample size grows.
+
+% \medskip
+
+% Historically, this result was first articulated by Jacob Bernoulli in the early eighteenth century. It provided the first rigorous justification for interpreting probability as long-run relative frequency and established a bridge between theoretical probability and empirical observation.
+
+% \medskip
+
+% Let $X_1,X_2,\dots$ be independent and identically distributed random variables with expected value $\mu$. The Law of Large Numbers states that the sample mean
+% \begin{equation}
+% \bar{X}_n = \frac{1}{n}\sum_{i=1}^n X_i
+% \end{equation}
+% converges to $\mu$ as the sample size $n$ increases.
+
+% \medskip
+
+% \textit{Example.} When repeatedly tossing a fair coin, individual outcomes are unpredictable, but the proportion of heads approaches $1/2$ as the number of tosses grows.
+
+% The Central Limit Theorem .......................................................................
+\section{The Central Limit Theorem}
+
+% The origins of the Central Limit Theorem can be traced to the work of Abraham de Moivre in the early eighteenth century, who discovered that binomial distributions with large numbers of trials could be approximated by a normal curve. This insight was later generalized by Pierre-Simon Laplace, who showed that the normal distribution arises broadly from the aggregation of many independent random effects. The modern formulation of the theorem, with precise conditions and convergence statements, was completed only in the late nineteenth and early twentieth centuries \cite{laplace_1812_theorie, stigler_1986_history}.
+
+% \medskip
+
+% While the Law of Large Numbers explains where averages converge, it does not describe how they fluctuate around their limiting value. The Central Limit Theorem answers this question by describing the distribution of fluctuations.
+
+% \medskip
+
+% One of the most remarkable results in probability theory, the Central Limit Theorem explains why the Gaussian distribution appears so frequently in statistical practice. It shows that many different random processes give rise to approximately normal behavior when aggregated.
+
+% \medskip
+
+% Let $X_1,\dots,X_n$ be independent and identically distributed with mean $\mu$ and variance $\sigma^2$. The Central Limit Theorem states that the standardized sample mean
+% \begin{equation}
+% \frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}}
+% \end{equation}
+% approaches a standard normal distribution as $n$ becomes large.
+
+% \medskip
+
+% \textit{Example.} Even if individual measurements are skewed, the distribution of their average over many observations is often approximately Gaussian.
+
+% Bias, variance and Mean Squared Errors ..........................................................
+\section{Bias, variance and Mean Squared Error}
+
+% The systematic study of estimators and their properties developed alongside the rise of mathematical statistics in the late nineteenth and early twentieth centuries. Early statisticians recognized that good estimation procedures must balance systematic error and random variability. This insight led to the decomposition of mean squared error into variance and squared bias, a framework that remains central in both classical statistics and modern machine learning \cite{stigler_1986_history, degroot_2012_probability}.
+
+% \medskip
+
+% An estimator is a rule that assigns a numerical value to an unknown parameter based on observed data. Because estimators depend on random samples, they are themselves random variables.
+
+% \medskip
+
+% The \textit{bias} of an estimator measures systematic error: it quantifies whether the estimator tends to overestimate or underestimate the true parameter. The \textit{variance} measures how much the estimator fluctuates from sample to sample.
+
+% \medskip
+
+% If $\hat{\theta}$ is an estimator of a parameter $\theta$, its bias is defined as
+% \begin{equation}
+% \operatorname{Bias}(\hat{\theta}) = \mathbb{E}[\hat{\theta}] - \theta,
+% \end{equation}
+% and its variance is
+% \begin{equation}
+% \operatorname{Var}(\hat{\theta}).
+% \end{equation}
+
+% \medskip
+
+% A common way to combine these two sources of error is the mean squared error (MSE):
+% \begin{equation}
+% \operatorname{MSE}(\hat{\theta}) = \mathbb{E}\!\left[(\hat{\theta}-\theta)^2\right]
+% = \operatorname{Var}(\hat{\theta}) + \operatorname{Bias}(\hat{\theta})^2.
+% \end{equation}
+
+% \medskip
+
+% \textbf{Example: The sample mean and variance}
+
+% \medskip
+
+% Let \(X_1,X_2,\dots,X_n\) be independent and identically distributed random variables with
+% \[
+% \mathbb{E}[X_i]=\mu,
+% \qquad
+% \operatorname{Var}(X_i)=\sigma^2.
+% \]
+
+% The \emph{sample mean}
+% \[
+% \bar{X}=\frac{1}{n}\sum_{i=1}^n X_i
+% \]
+% is an estimator of the population mean \(\mu\). Taking expectations,
+% \[
+% \mathbb{E}[\bar{X}]
+% =
+% \frac{1}{n}\sum_{i=1}^n \mathbb{E}[X_i]
+% =
+% \mu,
+% \]
+% so the sample mean is an \emph{unbiased} estimator of \(\mu\). Its variance is
+% \[
+% \operatorname{Var}(\bar{X})
+% =
+% \frac{\sigma^2}{n},
+% \]
+% which decreases as the sample size increases, explaining why larger samples yield more precise estimates.
+
+% \medskip
+
+% By contrast, consider the \emph{sample variance}
+% \[
+% s^2
+% =
+% \frac{1}{n-1}\sum_{i=1}^n (X_i-\bar{X})^2,
+% \]
+% which estimates the population variance \(\sigma^2\). The factor \(n-1\) in the denominator is chosen so that
+% \[
+% \mathbb{E}[s^2]=\sigma^2,
+% \]
+% making \(s^2\) an unbiased estimator. If instead the denominator \(n\) were used, the resulting estimator would be biased downward. This correction illustrates how bias and variance depend on the precise form of an estimator.
+
+% Confidence intervals and critical regions .......................................................
+\section{Confidence intervals and critical regions}
+
+% Confidence intervals emerged as a practical response to the limitations of point estimation. Rather than asking for a single best value, statisticians sought procedures that quantify uncertainty in a repeatable and operational way. The concept was formalized in the early twentieth century as part of the frequentist framework, emphasizing long-run coverage properties under repeated sampling. This interpretation remains foundational in applied statistics and experimental science \cite{degroot_2012_probability, bandyopadhyay_2011_philosophy}.
+
+% \medskip
+
+% Point estimates summarize data with a single number, but they do not convey uncertainty. Confidence intervals address this limitation by providing a range of plausible values for an unknown parameter. A confidence interval is constructed so that, in repeated sampling, it contains the true parameter a fixed proportion of the time. This proportion is called the confidence level and is typically expressed as a percentage.
+
+% \medskip
+
+% For a population with mean $\mu$ and known variance $\sigma^2$, an approximate $100(1-\alpha)\%$ confidence interval for $\mu$ is given by
+% \begin{equation}
+% \bar{X}_n \pm z_{\alpha/2}\frac{\sigma}{\sqrt{n}},
+% \end{equation}
+% where $z_{\alpha/2}$ is a quantile of the standard normal distribution.
+
+% \medskip
+
+% Confidence intervals are closely related to hypothesis testing. The set of parameter values not rejected by a statistical test forms a confidence region. This duality provides a unified framework for estimation and decision-making.
+
+% \medskip
+
+% \textit{Example.} A $95\%$ confidence interval for the mean expresses the range of values that are consistent with the observed data under repeated sampling.
+
+\begin{figure}[ht]
+    
+    \centering
+
+    % ----------- Subfigure 1 -----------
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=0.7\textwidth]{5_figures/chapter3/clt_2.png}
+        \caption{Histogram of the sample mean \(\bar{x}\) with a Gaussian fit.}
+        \label{fig:lln_1}
+    \end{subfigure}
+
+    \vspace{1.2em}
+
+    % ----------- Subfigure 2 -----------
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=0.7\textwidth]{5_figures/chapter3/lln.png}
+        \caption{Running sample mean \(\bar{x}(n)\) converging to the expected value \(\mu\), as the sample size increases.}
+        \label{fig:lln_2}
+    \end{subfigure}
+
+    \vspace{1.2em}
+
+    % ----------- Global caption -----------
+    \caption{The Law of Large Numbers: For a set of independent and identically distributed (iid) random variables, the sample mean \(\bar{x}\) asymptotically tends to the expected value \(\mu\), as the sample size \(n\) increases.}
+    \label{fig:fig:lln}
+
+\end{figure}
+
+
+\begin{figure}[ht]
+
+    \centering
+
+    % ----------- Subfigure 1 -----------
+    \begin{subfigure}{0.8\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{5_figures/chapter3/clt_1.png}
+        \caption{Histogram of sample mean for a sample size \(n = 10\) and Gaussian fit (dashed).}
+        \label{fig:clt1}
+    \end{subfigure}
+
+    \vspace{1.2em}
+
+    % ----------- Subfigure 2 -----------
+    \begin{subfigure}{0.8\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{5_figures/chapter3/clt_2.png}
+        \caption{Histogram of sample mean for a sample size \(n = 50\) and Gaussian fit (dashed).}
+        \label{fig:clt2}
+    \end{subfigure}
+
+    \vspace{1.2em}
+
+    % ----------- Subfigure 3 -----------
+    \begin{subfigure}{0.8\textwidth}
+        \centering
+        \includegraphics[width=0.6\textwidth]{5_figures/chapter3/clt_3.png}
+        \caption{Histogram of sample mean for a sample size \(n = 100\) and Gaussian fit (dashed).}
+        \label{fig:clt3}
+    \end{subfigure}
+
+    % ----------- Global caption -----------
+    \caption{The Central Limit Theorem: For a set of independent and identically distributed (iid) random variables, the sample mean \(\bar{x}\) asymptotically tends to a Gaussian distribution, as the sample size \(n\) increases.}
+    \label{fig:clt}
+
+\end{figure}
+
+\begin{figure}[ht]
+    
+    \centering
+
+    % ----------- Subfigure 1 -----------
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{5_figures/chapter3/xbar_sampling_distribution.png}
+        \caption{Sample mean distribution, illustrating convergence to a perfect Gaussian curve as the sample size \(n\) increaases, as expected under the Law of Large Numbers and the Central Limit Theorem.}
+        \label{fig:confidence1}
+    \end{subfigure}
+
+    \vspace{1.2em}
+
+    % ----------- Subfigure 2 -----------
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{5_figures/chapter3/confidence_intervals.png}
+        \caption{Confidence intervals: As the sample size \(n\) increases, a narrower region from the estimator (e.g. sample mean, sample variance) surely contains the true population paramter.}
+        \label{fig:confidence2}
+    \end{subfigure}
+
+    \vspace{1.2em}
+
+    % ----------- Global caption -----------
+    \caption{Confidence intervals and critical regions}
+    \label{fig:confidence}
+
+\end{figure}

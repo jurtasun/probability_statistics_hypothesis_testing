@@ -1,0 +1,91 @@
+\documentclass[11pt,oneside]{book}
+
+% Basic packages
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{epigraph}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+
+% Language / encoding
+\usepackage[utf8]{inputenc}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[greek,english]{babel}
+
+% Quotation handling
+\usepackage{csquotes}
+
+% Custom macros
+\input{0_config/macros.tex}
+
+\begin{document}
+
+\frontmatter
+% \title{A minimal introduction to probability theory, \\ statistical inference \& hypothesis testing}
+% \author{Jesús Urtasun Elizari}
+% \maketitle
+
+\begin{titlepage}
+    \centering
+
+    % Logo at the top
+    \vspace*{2cm}
+    \includegraphics[width=0.4\textwidth]{5_figures/icl_logo.jpeg}
+
+    \vspace{3.5cm}
+
+    % Title
+    {\LARGE
+    A minimal introduction to probability theory,\\[0.5em]
+    statistical inference \& hypothesis testing
+    \par}
+
+    \vspace{2cm}
+
+    % Author
+    {\large
+    Jesús Urtasun Elizari
+    \par}
+
+    \vfill
+
+    % Optional date
+    {\large \today\par}
+
+\end{titlepage}
+
+\tableofcontents
+
+\include{1_frontmatter/preface}
+\include{1_frontmatter/introduction}
+
+\mainmatter
+
+\include{2_chapters/chapter1}
+\include{2_chapters/chapter2}
+\include{2_chapters/chapter3}
+\include{2_chapters/chapter4}
+\include{2_chapters/chapter5}
+\include{2_chapters/chapter6}
+\include{2_chapters/chapter7}
+
+\appendix
+
+\include{3_backmatter/appendix1}
+\include{3_backmatter/appendix2}
+\include{3_backmatter/appendix3}
+\include{3_backmatter/appendix4}
+
+\backmatter
+
+% -----------------------
+% BibTeX GOES HERE
+% -----------------------
+\bibliographystyle{unsrt}
+\bibliography{4_bibliography/references}
+
+\end{document}
