@@ -1,13 +1,13 @@
 ## Introduction to probability, statistics and hypothesis testing
 
-<img src="/docs/readme_figures/imperial-college-logo.png" width = 600>
-<img src="/docs/readme_figures/pressbooks_logo.png" width = 600>
-
-### Jesús Urtasun Elizari, MRC LMS & ICL RCDS
+### Jesús Urtasun Elizari, MRC LMS & RCDS ICL
 
 LMS email address `Jesus.Urtasun@lms.mrc.ac.uk`
 
 ICL email address `jurtasun@ic.ac.uk`
+
+<img src="/docs/readme_figures/imperial-college-logo.png" width = 500>
+<img src="/docs/readme_figures/pressbooks_logo.png" width = 500>
 
 ### Access the Open-Source content on `Pressbooks`:
 
