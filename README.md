@@ -11,9 +11,11 @@ ICL email address `jurtasun@ic.ac.uk`
 
 ### Access the Open-Source content on `Pressbooks`:
 
-This course [probability_statistics_hypothesis_testing](https://github.com/jurtasun/probability_statistics_hypothesis_testing) provides an introduction to the field of probability and statistical inference. The content of the course is currently being edited and revised by the [https://pressbooks.pub](https://pressbooks.pub) open-source platform. Meanwhile, please find the available pdf version of the notes `statistics_probability_notes.pdf`.
+This course [probability_statistics_hypothesis_testing](https://github.com/jurtasun/probability_statistics_hypothesis_testing) provides an introduction to the field of probability and statistical inference. The content of the course is currently being edited and revised by the [https://pressbooks.pub](https://pressbooks.pub) open-source platform.
 
-The course is organized in seven chapters, covering the topics listed below:
+A complete version of the book is already available at `probability_statistics_hypothesis_testing.pdf` inside the [chapters](https://github.com/jurtasun/probability_statistics_hypothesis_testing/chapters) folder.
+
+The book is organized in seven chapters, covering the topics listed below:
 
 - Descriptive statistics
 - Foundations of probability
